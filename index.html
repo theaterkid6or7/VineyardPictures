@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vineyard Pictures | Texas Filmmaking</title>
+    <style>
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f1ea; /* Light dust color */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- COLORS --- */
+        :root {
+            --primary: #8B3A3A; /* Vineyard Red */
+            --secondary: #2C2C2C; /* Dark Slate */
+            --accent: #D4AF37; /* Gold/dust */
+            --light: #fff;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1478720568477-152d9b164e63?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 4rem 10%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* --- PROJECTS SLATE --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .project-image {
+            height: 400px;
+            background-color: #555; /* Placeholder for poster */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .status-tag {
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* --- CASTING --- */
+        .casting-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .casting-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .apply-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* --- SCRIPT SUBMISSIONS (LEGAL) --- */
+        .legal-box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            height: 200px;
+            overflow-y: scroll;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 1.5rem 0;
+            background: #ffecec;
+            padding: 10px;
+            border: 1px solid var(--primary);
+        }
+
+        .checkbox-group input {
+            margin-top: 5px;
+        }
+
+        button.submit-script {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button.submit-script:hover {
+            background-color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--secondary);
+            color: #888;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1rem; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Vineyard Pictures</div>
+        <div class="nav-links">
+            <a href="#projects">Slate</a>
+            <a href="#casting">Casting</a>
+            <a href="#submit">Script Submission</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Storytelling with Grit.</h1>
+        <p>Independent Film Production based in the heart of Texas.</p>
+    </header>
+
+    <section id="projects">
+        <h2>The Slate</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    [Poster Image]
+                </div>
+                <div class="project-info">
+                    <span class="status-tag">Post-Production</span>
+                    <h3>The Iron Fence</h3>
+                    <p><i>Thriller / Western</i></p>
+                    <p>A solitary rancher discovers a smuggling ring operating on his land and must decide between the law and his family's safety.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    [Poster Image]
+                </div>
+                <div class="project-info">
+                    <span class="status-tag">In Development</span>
+                    <h3>Neon Highway</h3>
+                    <p><i>Road Trip / Drama</i></p>
+                    <p>Two estranged sisters drive from Dallas to El Paso to scatter their father's ashes, uncovering secrets along the way.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    [Poster Image]
+                </div>
+                <div class="project-info">
+                    <span class="status-tag">Festival Run</span>
+                    <h3>Last Call at Ray's</h3>
+                    <p><i>Documentary</i></p>
+                    <p>The history of the oldest honky-tonk in East Texas and the community fighting to save it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="casting" style="background-color: #e9e5db;">
+        <h2>Casting Calls</h2>
+        <p style="margin-bottom: 20px;">We are currently seeking talent for the following productions. Please read the requirements carefully.</p>
+
+        <div class="casting-item">
+            <div class="casting-header">
+                <h3>PROJECT: The Iron Fence</h3>
+                <span><strong>Role:</strong> "DEPUTY HARRIS"</span>
+                <span><strong>Rate:</strong> SAG Low Budget / $200 day</span>
+            </div>
+            <p><strong>Shooting:</strong> Nov 12-15 (Austin, TX)</p>
+            <p><strong>Description:</strong> Male, 25-35. Clean-cut, eager, but slightly overwhelmed. Harris is the new deputy trying to prove himself to the sheriff. Must be comfortable driving a manual transmission vehicle.</p>
+            <button class="apply-btn" onclick="alert('This would open your email client or a specific casting form.')">Apply for Role</button>
+        </div>
+
+        <div class="casting-item">
+            <div class="casting-header">
+                <h3>PROJECT: Neon Highway</h3>
+                <span><strong>Role:</strong> BACKGROUND / EXTRAS</span>
+                <span><strong>Rate:</strong> Volunteer / Meals provided</span>
+            </div>
+            <p><strong>Shooting:</strong> Dec 01 (Fort Worth, TX)</p>
+            <p><strong>Description:</strong> All ages/genders. Patrons at a busy roadside diner. 1990s period attire encouraged but not required.</p>
+            <button class="apply-btn" onclick="alert('This would open your email client or a specific casting form.')">Apply for Role</button>
+        </div>
+    </section>
+
+    <section id="submit">
+        <h2>Script Submission</h2>
+        <p style="margin-bottom: 20px;">Vineyard Pictures accepts unsolicited material <strong>only</strong> if the following release agreement is signed.</p>
+
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <label>Submission Release Agreement (Please Read)</label>
+            <div class="legal-box">
+                <p><strong>1. No Obligation:</strong> Vineyard Pictures has no obligation to use, produce, or purchase your Material.</p>
+                <p><strong>2. Originality:</strong> You warrant that you are the sole author and owner of the Material.</p>
+                <p><strong>3. Similar Projects:</strong> You acknowledge that Vineyard Pictures receives many submissions and may be independently developing projects that are similar to your Material. You agree that you will not be entitled to any compensation if Vineyard Pictures produces a project similar to yours that was developed independently.</p>
+                <p><strong>4. No Compensation:</strong> Review of your Material is voluntary and does not imply a promise of payment.</p>
+                <p><strong>5. Return of Material:</strong> We are not obligated to return copies.</p>
+                <br>
+                <p><em>(Scroll to read full terms...)</em></p>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="legal-agree" name="legal-agree" required>
+                <label for="legal-agree" style="font-weight: normal; font-size: 0.9rem;">
+                    I have read and agree to the Submission Release Agreement. I understand that without this agreement, my script will not be read.
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Project Title</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="logline">Logline (1-2 sentences)</label>
+                <textarea id="logline" name="logline" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="script">Upload Script (PDF Only)</label>
+                <input type="file" id="script" name="script" accept=".pdf" required>
+            </div>
+
+            <button type="submit" class="submit-script">Submit Material</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <h3>Vineyard Pictures</h3>
+        <p>Austin • Dallas • Marfa</p>
+        <p>info@vineyardpictures-demo.com</p>
+        <p style="font-size: 0.8rem; margin-top: 20px;">&copy; 2024 Vineyard Pictures. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
